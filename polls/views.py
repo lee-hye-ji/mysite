@@ -12,14 +12,12 @@ def index(request):
         {'latest_question_list': q_list})
 
 def detail(request, question_id): # 질문 상세 페이지
-    question=Question.objects.get(id=question_id)
-    return render(
-        request, 'polls/detail.html',
-        {'question.questution'})
+    question=Question.objects.get(pk=question_id)
+    return render(request, 'polls/detail.html',{'question':question})
 
 
-def detail(request, question_id): # 질문 상세 페이지
-    return HttpResponse("You're looking at question %s." % question_id)
+# def detail(request, question_id): # 질문 상세 페이지
+#     return HttpResponse("You're looking at question %s." % question_id)
 
 def results(request, question_id): # 투표 결과 페이지
     response = "You're looking at the results of question %s."
